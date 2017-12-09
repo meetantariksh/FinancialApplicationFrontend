@@ -9,7 +9,8 @@ import {
   DEFAULT_ACTION,
   LOAD_NEWS,
   LOAD_NEWS_COMPLETE,
-  LOAD_NEWS_ERROR
+  LOAD_NEWS_ERROR,
+  RESET_LOAD_NEWS
 } from './constants';
 
 const initialState = fromJS({
@@ -39,6 +40,8 @@ function landingPageReducer(state = initialState, action) {
         .set('loadingNews', false)
         .set('loadingNewsComplete', false)
         .set('loadingNewsError', true);
+    case RESET_LOAD_NEWS:
+      return initialState;
     default:
       return state;
   }

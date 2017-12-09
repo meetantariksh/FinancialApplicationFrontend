@@ -19,7 +19,31 @@ const makeSelectLandingPage = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectLoadingNews = () => createSelector(
+  selectLandingPageDomain,
+  (substate) => substate.get('loadingNews')
+);
+
+const makeSelectLoadingNewsComplete = () => createSelector(
+  selectLandingPageDomain,
+  (substate) => substate.get('loadingNewsComplete')
+);
+
+const makeSelectLoadingNewsError = () => createSelector(
+  selectLandingPageDomain,
+  (substate) => substate.get('loadingNewsError')
+);
+
+const makeSelectNewsData = () => createSelector(
+  selectLandingPageDomain,
+  (substate) => substate.get('newsData')
+);
+
 export default makeSelectLandingPage;
 export {
   selectLandingPageDomain,
+  makeSelectLoadingNews,
+  makeSelectLoadingNewsError,
+  makeSelectLoadingNewsComplete,
+  makeSelectNewsData
 };

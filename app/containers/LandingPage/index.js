@@ -13,9 +13,18 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectLandingPage from './selectors';
+import makeSelectLandingPage, {
+  makeSelectLoadingNews,
+  makeSelectLoadingNewsComplete,
+  makeSelectLoadingNewsError,
+  makeSelectNewsData
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import {
+  loadNews,
+  resetLoadNews
+} from './actions';
 
 import LandingPageMainComponent from '../../components/LandingPage/Loadable';
 
@@ -29,6 +38,33 @@ import '../../styles/LandingPage/owl.carousel.min.css';
 import '../../styles/LandingPage/owl.theme.default.min.css';
 
 export class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  constructor(props){
+    super(props);
+    this.state = {
+      showNewsComponent: false,
+      renderAll: false
+    };
+  }
+
+  componentWillMount(){
+    this.props.dispatch(loadNews());
+  }
+
+  componentDidUpdate(){
+    if(!this.props.loadingNews && this.props.loadingNewsComplete){
+      this.setState({
+        showNewsComponent: true,
+        renderAll: true
+      });
+      this.props.dispatch(resetLoadNews());
+    }else if(this.props.loadingNewsError){
+      this.setState({
+        showNewsComponent: false,
+        renderAll: true
+      });
+      this.props.dispatch(resetLoadNews());
+    }
+  }
 
   render() {
     return (
@@ -37,11 +73,15 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
           <title>MAASS Financials</title>
           <meta name="description" content="This is the landing page for MAASS Financial Application" />
         </Helmet>
-        { /* <div className="gtco-loader"></div> */ }
         <div className="gtco-loader"></div>
-        <div>
-          <LandingPageMainComponent/>
-        </div>
+        {
+          this.state.renderAll &&
+          <div>
+            <LandingPageMainComponent
+              showNewsComponent = {this.state.showNewsComponent}
+            />
+          </div>
+        }
       </div>
     );
   }
@@ -53,6 +93,10 @@ LandingPage.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   landingpage: makeSelectLandingPage(),
+  loadingNews: makeSelectLoadingNews(),
+  loadingNewsComplete: makeSelectLoadingNewsComplete(),
+  loadingNewsError: makeSelectLoadingNewsError(),
+  newsData: makeSelectNewsData()
 });
 
 function mapDispatchToProps(dispatch) {
