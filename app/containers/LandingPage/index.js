@@ -17,7 +17,7 @@ import makeSelectLandingPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import Banner from '../../components/LandingPage/Banner/Loadable';
+import LandingPageMainComponent from '../../components/LandingPage/Loadable';
 
 import '../../styles/LandingPage/style.css';
 import '../../styles/LandingPage/animate.css';
@@ -30,10 +30,6 @@ import '../../styles/LandingPage/owl.theme.default.min.css';
 
 export class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
-  componentWillMount(){
-
-  }
-
   render() {
     return (
       <div>
@@ -42,8 +38,9 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
           <meta name="description" content="This is the landing page for MAASS Financial Application" />
         </Helmet>
         { /* <div className="gtco-loader"></div> */ }
-        <div id="page">
-          <Banner/>
+        <div className="gtco-loader"></div>
+        <div>
+          <LandingPageMainComponent/>
         </div>
       </div>
     );

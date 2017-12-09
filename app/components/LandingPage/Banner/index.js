@@ -6,10 +6,23 @@
 
 import React from 'react';
 // import styled from 'styled-components';
+import runjQueryMagnificPopup from '../../../externalJS/LandingPage/jquery.magnific-popup.min';
+import runMagnificPopup from '../../../externalJS/LandingPage/magnific-popup-options';
+import runOwlCarousel from '../../../externalJS/LandingPage/owl.carousel.min';
+import runMain from '../../../externalJS/LandingPage/main'; 
 
 const backGroundImage = require('../../../images/LandingPage/img_bg_1.jpg');
 
 class Banner extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+
+  componentDidMount(){
+    runjQueryMagnificPopup();
+    runMagnificPopup();
+    runOwlCarousel();
+    runMain();
+  }
+
   render() {
     return (
       <div>

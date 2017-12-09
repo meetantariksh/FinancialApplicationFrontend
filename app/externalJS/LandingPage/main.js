@@ -1,3 +1,4 @@
+export default function runMain(){ 
 ;(function () {
 	
 	'use strict';
@@ -14,9 +15,7 @@
     			$('body').removeClass('offcanvas');
     			$('.js-gtco-nav-toggle').removeClass('active');
 				
-	    	}
-	    
-	    	
+	    	}	
 	    }
 		});
 
@@ -330,3 +329,4 @@
 
 
 }());
+}

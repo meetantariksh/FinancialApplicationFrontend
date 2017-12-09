@@ -33,6 +33,7 @@ import 'file-loader?name=[name].[ext]!./externalJS/LandingPage/jquery.easing.1.3
 import 'file-loader?name=[name].[ext]!./externalJS/LandingPage/bootstrap.min';
 import 'file-loader?name=[name].[ext]!./externalJS/LandingPage/jquery.waypoints.min';
 import 'file-loader?name=[name].[ext]!./externalJS/LandingPage/jquery.countTo';
+import 'file-loader?name=[name].[ext]!./externalJS/LandingPage/modernizr-2.6.2.min';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import configureStore from './configureStore';

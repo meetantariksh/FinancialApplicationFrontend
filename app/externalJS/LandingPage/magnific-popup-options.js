@@ -1,3 +1,4 @@
+export default function runMagnificPopup(){ 
 $(document).ready(function() {
   // MagnificPopup
 	var magnifPopup = function() {
@@ -46,3 +47,4 @@ $(document).ready(function() {
 	magnifVideo();
 
 });
+}
