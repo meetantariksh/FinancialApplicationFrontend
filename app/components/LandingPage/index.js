@@ -13,7 +13,8 @@ class LandingPageMainComponent extends React.PureComponent {
 }
 
 LandingPageMainComponent.propTypes = {
-    showNewsComponent: React.PropTypes.bool
+    showNewsComponent: React.PropTypes.bool.isRequired,
+    newsData: React.PropTypes.object.isRequired
 };
     
 export default LandingPageMainComponent;

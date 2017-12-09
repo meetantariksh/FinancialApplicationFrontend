@@ -42,7 +42,8 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
     super(props);
     this.state = {
       showNewsComponent: false,
-      renderAll: false
+      renderAll: false,
+      newsData: {}
     };
   }
 
@@ -52,10 +53,27 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
 
   componentDidUpdate(){
     if(!this.props.loadingNews && this.props.loadingNewsComplete){
-      this.setState({
-        showNewsComponent: true,
-        renderAll: true
-      });
+      try{
+        let data = JSON.parse(this.props.newsData);
+        if(data){
+          this.setState({
+            showNewsComponent: true,
+            renderAll: true,
+            newsData: data
+          });
+        }else{
+          this.setState({
+            showNewsComponent: false,
+            renderAll: true
+          });
+        }
+      }catch (error){
+        console.log(error);
+        this.setState({
+          showNewsComponent: false,
+          renderAll: true
+        });
+      }
       this.props.dispatch(resetLoadNews());
     }else if(this.props.loadingNewsError){
       this.setState({
@@ -79,6 +97,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
           <div>
             <LandingPageMainComponent
               showNewsComponent = {this.state.showNewsComponent}
+              newsData = {this.state.newsData}
             />
           </div>
         }
