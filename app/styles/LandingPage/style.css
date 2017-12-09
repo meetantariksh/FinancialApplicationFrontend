@@ -329,6 +329,7 @@ h1, h2, h3, h4, h5, h6, figure {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  background: url(../../images/LandingPage/banner2.jpg);
   position: relative;
   float: left;
   width: 100%;
@@ -346,7 +347,7 @@ h1, h2, h3, h4, h5, h6, figure {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(29, 43, 83, 0.89);
+  background: rgba(7, 8, 12, 0.62);
 }
 .gtco-cover > .gtco-container {
   position: relative;
@@ -543,7 +544,7 @@ form label {
 #gtco-counter .display-tc h1,
 .gtco-cover .display-tc h1 {
   margin-bottom: 0px;
-  font-size: 59px;
+  font-size: 85px;
   line-height: 1.5;
 }
 @media screen and (max-width: 768px) {
