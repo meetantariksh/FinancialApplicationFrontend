@@ -5,7 +5,6 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
 import runjQueryMagnificPopup from '../../../externalJS/LandingPage/jquery.magnific-popup.min';
 import runMagnificPopup from '../../../externalJS/LandingPage/magnific-popup-options';
 import runOwlCarousel from '../../../externalJS/LandingPage/owl.carousel.min';

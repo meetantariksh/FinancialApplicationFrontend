@@ -5,9 +5,42 @@
 */
 
 import React from 'react';
+import Auth0Lock from 'auth0-lock';
 // import styled from 'styled-components';
+import AuthenticationComponent from '../../AuthenticationComponent';
+
+const authentication = {
+  responseType: 'token',
+}
+
+const options = {
+  oidcConformant: true,
+  auth: authentication
+}
+
+const lock = new Auth0Lock(
+  'fWoMdxejWduzgcOzHeOTi5JG63ck7pyx',
+  'meetantariksh.auth0.com',
+  options
+);
 
 class Banner extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  componentWillMount(){
+    lock.on("authenticated", function(authResult) {
+      lock.getUserInfo(authResult.accessToken, function(error, profile) {
+        if (error) {
+          console.log('Error Occured ' + error)
+          return;
+        }
+        console.log(authResult.accessToken);
+      });
+    });
+  }
+
+  onLoginActivate(){
+    lock.show(); 
+  }
 
   render() {
     return (
@@ -42,6 +75,7 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
                   <li><a href="#">Global News</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Contact</a></li>
+                  <li><a onClick={this.onLoginActivate}>Login</a></li>
                 </ul>
               </div>
             </div>
