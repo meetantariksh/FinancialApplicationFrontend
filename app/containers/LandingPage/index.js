@@ -88,7 +88,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
     return (
       <div>
         <Helmet>
-          <title>MAASS Financials</title>
+          <title>Arian Financials</title>
           <meta name="description" content="This is the landing page for MAASS Financial Application" />
         </Helmet>
         <div className="gtco-loader"></div>

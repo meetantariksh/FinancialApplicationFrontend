@@ -14,8 +14,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
 import LandingPage from 'containers/LandingPage/Loadable';
+import LoadingContainer from 'containers/LoadingContainer/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 export default function App() {
@@ -23,6 +23,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={LandingPage} />
+        <Route exact path="/userLoad" component={LoadingContainer} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
