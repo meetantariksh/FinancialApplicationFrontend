@@ -35,7 +35,7 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
             </div>
             <div className="row">
               <div className="col-sm-4 col-xs-12">
-                <div id="gtco-logo"><a href="index.html">ROGH</a></div>
+                <div id="gtco-logo"><a onClick={this.onLoginActivate}>Login</a></div>
               </div>
               <div className="col-xs-8 text-right menu-1">
                 <ul>
@@ -51,7 +51,6 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
                   <li><a href="#">Global News</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Contact</a></li>
-                  <li><a href="#" onClick={this.onLoginActivate}>Login</a></li>
                 </ul>
               </div>
             </div>

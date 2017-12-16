@@ -68,7 +68,7 @@ export default function runMain(){
 
 	var burgerMenu = function() {
 
-		$('body').on('click', '.js-gtco-nav-toggle', function(event){
+		$(document).on('click', '.js-gtco-nav-toggle', function(event){
 			var $this = $(this);
 
 
@@ -230,7 +230,7 @@ export default function runMain(){
 
 
 		// Click tab menu
-		$('.gtco-tab-nav a').on('click', function(event){
+		$(document).on('click','.gtco-tab-nav a', function(event){
 			
 			var $this = $(this),
 				tab = $this.data('tab');
@@ -263,7 +263,7 @@ export default function runMain(){
 
 	var goToTop = function() {
 
-		$('.js-gotop').on('click', function(event){
+		$(document).on('click','.js-gotop', function(event){
 			
 			event.preventDefault();
 
