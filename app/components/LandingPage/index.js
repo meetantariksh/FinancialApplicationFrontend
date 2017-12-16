@@ -12,7 +12,9 @@ class LandingPageMainComponent extends React.PureComponent {
     render() {
         return (
             <div id="page">
-                <Banner/>
+                <Banner 
+                    authenticationLock = {this.props.authenticationLock}
+                />
                 <Services/>
                 <Products/>
                 {
@@ -30,7 +32,8 @@ class LandingPageMainComponent extends React.PureComponent {
 
 LandingPageMainComponent.propTypes = {
     showNewsComponent: React.PropTypes.bool.isRequired,
-    newsData: React.PropTypes.object.isRequired
+    newsData: React.PropTypes.object.isRequired,
+    authenticationLock: React.PropTypes.object.isRequired
 };
     
 export default LandingPageMainComponent;

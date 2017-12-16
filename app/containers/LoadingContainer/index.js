@@ -18,20 +18,39 @@ import saga from './saga';
 
 import '../../styles/LoadingStyles/LoadingPage/style.css';
 
+const lock = new Auth0Lock(
+  'fWoMdxejWduzgcOzHeOTi5JG63ck7pyx',
+  'meetantariksh.auth0.com'
+);
+
 export class LoadingContainer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  
+  componentWillMount(){
+    if(!window.sessionStorage.getItem('non_db_authentication_token') || window.sessionStorage.getItem('non_db_authentication_token')==''){
+      lock.on("authenticated", function(authResult) {
+        lock.getUserInfo(authResult.accessToken, function(error, profile) {
+          window.sessionStorage.setItem('non_db_authentication_token', authResult.accessToken);
+          console.log(authResult.accessToken);
+        });
+    });
+    }else{
+      console.log(window.sessionStorage.getItem('non_db_authentication_token'));
+    }
+  }
+  
   render() {
     return (
-      <div>
+      <div className="loader-body">
         <h1>Cube Flipping Loader</h1>
-        <div class="cube-wrapper">
-        <div class="cube-folding">
-          <span class="leaf1"></span>
-          <span class="leaf2"></span>
-          <span class="leaf3"></span>
-          <span class="leaf4"></span>
+        <div className="cube-wrapper">
+          <div className="cube-folding">
+            <span className="leaf1"></span>
+            <span className="leaf2"></span>
+            <span className="leaf3"></span>
+            <span className="leaf4"></span>
+          </div>
+          <span className="loading" data-name="Loading">Loading</span>
         </div>
-        <span class="loading" data-name="Loading">Loading</span>
-      </div>
       </div>
     );
   }

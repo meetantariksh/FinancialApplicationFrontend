@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import Auth0Lock from 'auth0-lock';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -36,6 +37,23 @@ import '../../styles/LandingPage/bootstrap.css';
 import '../../styles/LandingPage/magnific-popup.css';
 import '../../styles/LandingPage/owl.carousel.min.css';
 import '../../styles/LandingPage/owl.theme.default.min.css';
+
+
+const authentication = {
+  responseType: 'token',
+  redirectUrl: 'http://localhost:3000/userLoad'
+}
+
+const options = {
+  oidcConformant: true,
+  auth: authentication
+}
+
+const lock = new Auth0Lock(
+  'fWoMdxejWduzgcOzHeOTi5JG63ck7pyx',
+  'meetantariksh.auth0.com',
+  options
+);
 
 export class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
@@ -98,6 +116,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
             <LandingPageMainComponent
               showNewsComponent = {this.state.showNewsComponent}
               newsData = {this.state.newsData}
+              authenticationLock={lock}
             />
           </div>
         }
