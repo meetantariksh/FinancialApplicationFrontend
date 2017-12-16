@@ -38,7 +38,7 @@ import '../../styles/LandingPage/magnific-popup.css';
 import '../../styles/LandingPage/owl.carousel.min.css';
 import '../../styles/LandingPage/owl.theme.default.min.css';
 
-
+const logo = require('../../images/LandingPage/logo.jpg');
 const authentication = {
   responseType: 'token',
   redirectUrl: 'http://localhost:3000/userLoad'
@@ -46,7 +46,16 @@ const authentication = {
 
 const options = {
   oidcConformant: true,
-  auth: authentication
+  auth: authentication,
+  allowShowPassword: true,
+  allowSignUp: false,
+  theme: {
+    logo: logo,
+    primaryColor: '#0072ff'
+  },
+  languageDictionary: {
+    title: "Arian Finance",
+  },
 }
 
 const lock = new Auth0Lock(
