@@ -41,7 +41,8 @@ export class LoadingContainer extends React.PureComponent { // eslint-disable-li
   render() {
     return (
       <div className="loader-body">
-        <h1>Cube Flipping Loader</h1>
+        <h1>Beware of little expenses. A small leak will sink a great ship.</h1>
+        <h3>(Benjamin Franklin)</h3>
         <div className="cube-wrapper">
           <div className="cube-folding">
             <span className="leaf1"></span>

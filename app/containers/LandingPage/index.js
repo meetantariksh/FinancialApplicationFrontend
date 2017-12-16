@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { push } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import Auth0Lock from 'auth0-lock';
@@ -72,6 +73,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
       renderAll: false,
       newsData: {}
     };
+    this.dispatchRegistration = this.dispatchRegistration.bind(this);
   }
 
   componentWillMount(){
@@ -111,6 +113,10 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
     }
   }
 
+  dispatchRegistration(){
+    this.props.dispatch(push('/registration'));
+  }
+
   render() {
     return (
       <div>
@@ -126,6 +132,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
               showNewsComponent = {this.state.showNewsComponent}
               newsData = {this.state.newsData}
               authenticationLock={lock}
+              dispatchRegistration={this.dispatchRegistration}
             />
           </div>
         }

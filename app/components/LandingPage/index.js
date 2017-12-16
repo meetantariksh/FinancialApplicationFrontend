@@ -14,6 +14,7 @@ class LandingPageMainComponent extends React.PureComponent {
             <div id="page">
                 <Banner 
                     authenticationLock = {this.props.authenticationLock}
+                    dispatchRegistration = {this.props.dispatchRegistration}
                 />
                 <Services/>
                 <Products/>
@@ -33,7 +34,8 @@ class LandingPageMainComponent extends React.PureComponent {
 LandingPageMainComponent.propTypes = {
     showNewsComponent: React.PropTypes.bool.isRequired,
     newsData: React.PropTypes.object.isRequired,
-    authenticationLock: React.PropTypes.object.isRequired
+    authenticationLock: React.PropTypes.object.isRequired,
+    dispatchRegistration: React.PropTypes.func.isRequired
 };
     
 export default LandingPageMainComponent;

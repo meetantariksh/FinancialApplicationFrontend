@@ -17,6 +17,7 @@ import { Switch, Route } from 'react-router-dom';
 import LandingPage from 'containers/LandingPage/Loadable';
 import LoadingContainer from 'containers/LoadingContainer/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import RegistrationContainer from 'containers/RegistrationContainer/Loadable';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/userLoad" component={LoadingContainer} />
+        <Route exact path="/registration" component={RegistrationContainer} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

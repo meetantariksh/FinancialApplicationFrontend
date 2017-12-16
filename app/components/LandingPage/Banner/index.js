@@ -12,9 +12,13 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
   constructor(props){
     super(props);
     this.onLoginActivate = this.onLoginActivate.bind(this);
+    this.dispatchRegistration = this.dispatchRegistration.bind(this);
   }
   onLoginActivate(){
     this.props.authenticationLock.show(); 
+  }
+  dispatchRegistration(){
+    this.props.dispatchRegistration(); 
   }
 
   render() {
@@ -26,7 +30,7 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
               <div className="col-md-12 text-right gtco-contact">
                 <ul className="">
                   <li><a onClick={this.onLoginActivate}><strong>Login</strong></a></li>
-                  <li><a ><strong>Register</strong></a></li>
+                  <li><a onClick={this.dispatchRegistration}><strong>Register</strong></a></li>
                 </ul>
               </div>
             </div>
