@@ -3,6 +3,9 @@
 Primary style
 
 -------------------------------- */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
+
 *, *::after, *::before {
   box-sizing: border-box;
 }
@@ -28,6 +31,13 @@ input {
   font-size: 1.6rem;
 }
 
+.body-class {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #0f222b;
+  background-color: #0f222b;
+}
+
 /* -------------------------------- 
 
 Header - not needed in production
@@ -35,7 +45,6 @@ Header - not needed in production
 -------------------------------- */
 .cd-main-header {
   height: 170px;
-  line-height: 170px;
   text-align: center;
 }
 .cd-main-header h1 {
@@ -43,10 +52,13 @@ Header - not needed in production
   font-weight: 300;
   font-size: 2rem;
 }
+.cd-main-header h2 {
+  color: #ffffff;
+  font-size: 1.4rem;
+}
 @media only screen and (min-width: 1024px) {
   .cd-main-header {
     height: 220px;
-    line-height: 220px;
   }
   .cd-main-header h1 {
     font-size: 2.6rem;
