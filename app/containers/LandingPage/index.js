@@ -114,7 +114,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
   }
 
   dispatchRegistration(){
-    this.props.dispatch(push('/registration'));
+    window.location.href = "/registration";
   }
 
   render() {

@@ -1,13 +1,19 @@
 export default function runMain(){ 
+	console.log('I am Running');
 	jQuery(document).ready(function($){
 		if( $('.cd-form').length > 0 ) {
+			console.log('I am in form');
 			//set some form parameters
-			var device = checkWindowWidth(),
+			try{
+				var device = checkWindowWidth(),
 				tableFinalWidth = ( device == 'mobile') ? $(window).width()*0.9 : 210,
 				tableFinalHeight = ( device == 'mobile' ) ? 93 : 255;
-				formMaxWidth = 900,
-				formMaxHeight = 650,
-				animating =  false; 
+				var formMaxWidth = 900;
+				var formMaxHeight = 650;
+				var animating =  false; 
+			}catch(error){
+				console.log('Error: ' + error);
+			}
 
 			//set animation duration/delay
 			var	animationDuration = 800,
@@ -20,6 +26,7 @@ export default function runMain(){
 
 			//select a plan and open the signup form
 			formPopup.on('click', 'a', function(event){
+				console.log('I have clicked');
 				event.preventDefault();
 				triggerAnimation( $(this).parents('.cd-pricing-footer').parent('li'), coverLayer, true);
 			});

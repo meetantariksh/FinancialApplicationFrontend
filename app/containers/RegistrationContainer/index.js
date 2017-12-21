@@ -30,18 +30,18 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
     this.goToHomePage = this.goToHomePage.bind(this);
   }
 
-  componentWillMount(){
-    runMain();
+  componentDidMount(){
     runVelocity();
+    runMain();
   }
 
   goToHomePage(){
-    this.props.dispatch(push('/'));
+    window.location.href = "/";
   }
 
   render() {
     return (
-      <div className="body-class">
+      <div>
         <Helmet>
           <title>Arian Finance - Registration</title>
           <meta name="description" content="Description of RegistrationContainer" />
@@ -50,13 +50,11 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
           <h1 style={{paddingTop: '50px', paddingBottom: '25px'}}>Arian Finance Registration</h1>
           <a onClick={this.goToHomePage}><h2>Return To Home Page</h2></a>
         </header>
-        <div className="body-class">
           <ul className="cd-pricing">
             
             <li style={{display: 'hide'}}>
               <header className="cd-pricing-header">
-                <h2>General</h2>
-                <h2>Insurance</h2>
+                <h2>Agent</h2>
               </header>
 
               <div className="cd-pricing-features">
@@ -75,8 +73,7 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
 
             <li>
               <header className="cd-pricing-header">
-                <h2>Mutual</h2>
-                <h2>Funds</h2>
+                <h2>General User</h2>
               </header>
 
               <div className="cd-pricing-features">
@@ -95,8 +92,7 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
 
             <li>
               <header className="cd-pricing-header">
-                <h2>Life</h2>
-                <h2>Insurance</h2>
+                <h2>Distributor</h2>
               </header>
 
               <div className="cd-pricing-features">
@@ -111,11 +107,121 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
                 <a href="#0">Select</a>
               </footer>
             </li>
+          </ul>
 
 
-          </ul> 
+          <div className="cd-form">
+		
+            <div className="cd-plan-info">
+            </div>
+
+            <div className="cd-more-info">
+              <h3>Need help?</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            
+            <form action="">
+              <fieldset>
+                <legend>Account Info</legend>
+                
+                <div className="half-width">
+                  <label htmlFor="userName">Name</label>
+                  <input type="text" id="userName" name="userName"/>
+                </div>
+                
+                <div className="half-width">
+                  <label htmlFor="userEmail">Email</label>
+                  <input type="email" id="userEmail" name="userEmail" />
+                </div>
+                
+                <div className="half-width">
+                  <label htmlFor="userPassword">Password</label>
+                  <input type="password" id="userPassword" name="userPassword" />
+                </div>
+                
+                <div className="half-width">
+                  <label htmlFor="userPasswordRepeat">Repeat Password</label>
+                  <input type="password" id="userPasswordRepeat" name="userPasswordRepeat" />
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Payment Method</legend>
+                
+                <div>
+                  <ul className="cd-payment-gateways">
+                    <li>
+                      <input type="radio" name="payment-method" id="paypal" value="paypal" />
+                      <label htmlFor="paypal">Paypal</label>
+                    </li>
+                    
+                    <li>
+                      <input type="radio" name="payment-method" id="card" value="card" checked />
+                      <label htmlFor="card">Card</label>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="cd-credit-card">
+                  <div>
+                    <p className="half-width">
+                      <label htmlFor="cardNumber">Card Number</label>
+                      <input type="text" id="cardNumber" name="cardNumber" />
+                    </p>
+
+                    <p className="half-width">
+                      <label>Expiration date</label>
+                      <b>
+                        <span className="cd-select">
+                          <select name="card-expiry-month" id="card-expiry-month">
+                            <option value="1">1</option>
+                            <option value="1">2</option>
+                            <option value="1">3</option>
+                            <option value="1">4</option>
+                            <option value="1">5</option>
+                            <option value="1">6</option>
+                            <option value="1">7</option>
+                            <option value="1">8</option>
+                            <option value="1">9</option>
+                            <option value="1">10</option>
+                            <option value="1">11</option>
+                            <option value="1">12</option>
+                          </select>
+                        </span>
+
+                        <span className="cd-select">
+                          <select name="card-expiry-year" id="card-expiry-year">
+                            <option value="2015">2015</option>
+                            <option value="2015">2016</option>
+                            <option value="2015">2017</option>
+                            <option value="2015">2018</option>
+                            <option value="2015">2019</option>
+                            <option value="2015">2020</option>
+                          </select>
+                        </span>
+                      </b>
+                    </p>
+                    
+                    <p className="half-width">
+                      <label htmlFor="cardCvc">Card CVC</label>
+                      <input type="text" id="cardCvc" name="cardCvc" />
+                    </p>
+                  </div>
+                </div>
+              </fieldset>
+              
+              <fieldset>
+                <div>
+                  <input type="submit" value="Get started" />
+                </div>
+              </fieldset>
+            </form>
+
+            <a href="#0" className="cd-close"></a>
+          </div>
+          <div className="cd-overlay"></div>
+
         </div>
-      </div>
     );
   }
 }
