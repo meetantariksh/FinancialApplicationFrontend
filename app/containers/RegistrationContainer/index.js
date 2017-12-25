@@ -21,22 +21,40 @@ import saga from './saga';
 import '../../styles/RegistrationStyles/style.css';
 import '../../styles/RegistrationStyles/reset.css';
 
-import runMain from '../../externalJS/RegistrationPage/main'; 
+import { 
+  triggerOpenAnimation,
+  triggerCloseAnimation,
+} from '../../externalJS/RegistrationPage/main'; 
 import runVelocity from '../../externalJS/RegistrationPage/velocity.min'; 
+
+import GeneralUserRegistration from '../../components/RegistrationComponent/GeneralUserRegistration/Loadable';
 
 export class RegistrationContainer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props);
+    this.state = {
+      registrationGeneralUser: false,
+      registrationGeneralUserClassName: '',
+      registrationAgent: false,
+      registrationDistributor: false,
+    };
     this.goToHomePage = this.goToHomePage.bind(this);
+    this.toggleRegistrationGeneralUser = this.toggleRegistrationGeneralUser.bind(this);
   }
 
   componentDidMount(){
     runVelocity();
-    runMain();
   }
 
   goToHomePage(){
     window.location.href = "/";
+  }
+
+  toggleRegistrationGeneralUser(){ 
+    this.setState({
+      registrationGeneralUser: !this.state.registrationGeneralUser,
+      registrationGeneralUserClassName: (this.state.registrationGeneralUserClassName === '' ? 'selected-table empty-box':'')
+    });
   }
 
   render() {
@@ -52,7 +70,7 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
         </header>
           <ul className="cd-pricing">
             
-            <li style={{display: 'hide'}}>
+            <li>
               <header className="cd-pricing-header">
                 <h2>Agent</h2>
               </header>
@@ -67,11 +85,11 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
               </div>
 
               <footer className="cd-pricing-footer">
-                <a href="#0">Select</a>
+                <a>Comming Soon</a>
               </footer>
             </li>
 
-            <li>
+            <li className={this.state.registrationGeneralUserClassName}>
               <header className="cd-pricing-header">
                 <h2>General User</h2>
               </header>
@@ -86,7 +104,7 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
               </div>
 
               <footer className="cd-pricing-footer">
-                <a href="#0">Select</a>
+                <a onClick={this.toggleRegistrationGeneralUser}>Select</a>
               </footer>
             </li>
 
@@ -104,121 +122,20 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
                 </ul>
               </div>
               <footer className="cd-pricing-footer">
-                <a href="#0">Select</a>
+                <a>Comming Soon</a>
               </footer>
             </li>
           </ul>
 
+          {
+            this.state.registrationGeneralUser && 
+            <GeneralUserRegistration 
+              triggerOpenAnimation = {triggerOpenAnimation}
+              triggerCloseAnimation = {triggerCloseAnimation}
+              closeForm = {this.toggleRegistrationGeneralUser}
+            />
+          }
 
-          <div className="cd-form">
-		
-            <div className="cd-plan-info">
-            </div>
-
-            <div className="cd-more-info">
-              <h3>Need help?</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-            
-            <form action="">
-              <fieldset>
-                <legend>Account Info</legend>
-                
-                <div className="half-width">
-                  <label htmlFor="userName">Name</label>
-                  <input type="text" id="userName" name="userName"/>
-                </div>
-                
-                <div className="half-width">
-                  <label htmlFor="userEmail">Email</label>
-                  <input type="email" id="userEmail" name="userEmail" />
-                </div>
-                
-                <div className="half-width">
-                  <label htmlFor="userPassword">Password</label>
-                  <input type="password" id="userPassword" name="userPassword" />
-                </div>
-                
-                <div className="half-width">
-                  <label htmlFor="userPasswordRepeat">Repeat Password</label>
-                  <input type="password" id="userPasswordRepeat" name="userPasswordRepeat" />
-                </div>
-              </fieldset>
-
-              <fieldset>
-                <legend>Payment Method</legend>
-                
-                <div>
-                  <ul className="cd-payment-gateways">
-                    <li>
-                      <input type="radio" name="payment-method" id="paypal" value="paypal" />
-                      <label htmlFor="paypal">Paypal</label>
-                    </li>
-                    
-                    <li>
-                      <input type="radio" name="payment-method" id="card" value="card" checked />
-                      <label htmlFor="card">Card</label>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="cd-credit-card">
-                  <div>
-                    <p className="half-width">
-                      <label htmlFor="cardNumber">Card Number</label>
-                      <input type="text" id="cardNumber" name="cardNumber" />
-                    </p>
-
-                    <p className="half-width">
-                      <label>Expiration date</label>
-                      <b>
-                        <span className="cd-select">
-                          <select name="card-expiry-month" id="card-expiry-month">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="1">5</option>
-                            <option value="1">6</option>
-                            <option value="1">7</option>
-                            <option value="1">8</option>
-                            <option value="1">9</option>
-                            <option value="1">10</option>
-                            <option value="1">11</option>
-                            <option value="1">12</option>
-                          </select>
-                        </span>
-
-                        <span className="cd-select">
-                          <select name="card-expiry-year" id="card-expiry-year">
-                            <option value="2015">2015</option>
-                            <option value="2015">2016</option>
-                            <option value="2015">2017</option>
-                            <option value="2015">2018</option>
-                            <option value="2015">2019</option>
-                            <option value="2015">2020</option>
-                          </select>
-                        </span>
-                      </b>
-                    </p>
-                    
-                    <p className="half-width">
-                      <label htmlFor="cardCvc">Card CVC</label>
-                      <input type="text" id="cardCvc" name="cardCvc" />
-                    </p>
-                  </div>
-                </div>
-              </fieldset>
-              
-              <fieldset>
-                <div>
-                  <input type="submit" value="Get started" />
-                </div>
-              </fieldset>
-            </form>
-
-            <a href="#0" className="cd-close"></a>
-          </div>
           <div className="cd-overlay"></div>
 
         </div>
