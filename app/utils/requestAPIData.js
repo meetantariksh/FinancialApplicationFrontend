@@ -19,3 +19,10 @@ export function requestGetAPIData(url) {
     .then(checkStatus)
     .then(parseJSON);
 }
+
+export function requestPostAPIData(url, body) {
+  console.log(body);
+  return axios.post(url, body)
+    .then(checkStatus)
+    .then(parseJSON);
+}

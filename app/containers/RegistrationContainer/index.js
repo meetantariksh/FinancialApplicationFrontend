@@ -14,9 +14,20 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectRegistrationContainer from './selectors';
+import makeSelectRegistrationContainer, {
+  makeSelectCheckEmail,
+  makeSelectCheckEmailComplete,
+  makeSelectCheckEmailError,
+  makeSelectIsUserRegistered,
+  makeSelectProfileData
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+
+import {
+  checkEmail,
+  checkEmailReset
+} from './actions';
 
 import '../../styles/RegistrationStyles/style.css';
 import '../../styles/RegistrationStyles/reset.css';
@@ -40,6 +51,8 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
     };
     this.goToHomePage = this.goToHomePage.bind(this);
     this.toggleRegistrationGeneralUser = this.toggleRegistrationGeneralUser.bind(this);
+    this.initiateCheckEmail = this.initiateCheckEmail.bind(this);
+    this.resetCheckEmail = this.resetCheckEmail.bind(this);
   }
 
   componentDidMount(){
@@ -55,6 +68,14 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
       registrationGeneralUser: !this.state.registrationGeneralUser,
       registrationGeneralUserClassName: (this.state.registrationGeneralUserClassName === '' ? 'selected-table empty-box':'')
     });
+  }
+
+  initiateCheckEmail(email){
+    this.props.dispatch(checkEmail(email));
+  }
+
+  resetCheckEmail(){
+    this.props.dispatch(checkEmailReset());
   }
 
   render() {
@@ -133,6 +154,16 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
               triggerOpenAnimation = {triggerOpenAnimation}
               triggerCloseAnimation = {triggerCloseAnimation}
               closeForm = {this.toggleRegistrationGeneralUser}
+              initiateCheckEmail = {this.initiateCheckEmail}
+              registrationData = {{
+                checkEmail: this.props.checkEmail,
+                checkEmailComplte: this.props.checkEmailComplte,
+                checkEmailError: this.props.checkEmailError,
+                isUserRegistered: this.props.isUserRegistered,
+                profileData: this.props.profileData,
+                }
+              }
+              resetCheckEmail = {this.resetCheckEmail}
             />
           }
 
@@ -149,6 +180,11 @@ RegistrationContainer.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   registrationcontainer: makeSelectRegistrationContainer(),
+  checkEmail: makeSelectCheckEmail(),
+  checkEmailComplte: makeSelectCheckEmailComplete(),
+  checkEmailError: makeSelectCheckEmailError(),
+  isUserRegistered: makeSelectIsUserRegistered(),
+  profileData: makeSelectProfileData(),
 });
 
 function mapDispatchToProps(dispatch) {

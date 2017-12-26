@@ -17,3 +17,29 @@ export function defaultAction() {
     type: DEFAULT_ACTION,
   };
 }
+
+export function checkEmail(email) {
+  return {
+    type: CHECK_EMAIL,
+    email
+  };
+}
+
+export function checkEmailComplete(profileData) {
+  return {
+    type: CHECK_EMAIL_COMPLETE,
+    profileData
+  };
+}
+
+export function checkEmailError() {
+  return {
+    type: CHECK_EMAIL_ERROR,
+  };
+}
+
+export function checkEmailReset() {
+  return {
+    type: RESET_CHECK_EMAIL,
+  };
+}

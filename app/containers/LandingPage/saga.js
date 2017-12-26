@@ -23,7 +23,6 @@ export function* loadNewsHeadLines(){
   }
 }
 
-// Individual exports for testing
 export default function* landingPageSaga() {
   yield takeLatest(LOAD_NEWS, loadNewsHeadLines);
 }
