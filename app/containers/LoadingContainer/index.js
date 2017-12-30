@@ -25,16 +25,19 @@ const lock = new Auth0Lock(
 
 export class LoadingContainer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   
-  componentWillMount(){
+  componentDidMount(){
+    let authStatus = false;
     if(!window.sessionStorage.getItem('non_db_authentication_token') || window.sessionStorage.getItem('non_db_authentication_token')==''){
       lock.on("authenticated", function(authResult) {
+        console.log(authResult);
+        authStatus = true;
         lock.getUserInfo(authResult.accessToken, function(error, profile) {
           window.sessionStorage.setItem('non_db_authentication_token', authResult.accessToken);
-          console.log(authResult.accessToken);
         });
-    });
-    }else{
-      console.log(window.sessionStorage.getItem('non_db_authentication_token'));
+        if(!authStatus){
+          window.location.href = "/";
+        }
+      });
     }
   }
   

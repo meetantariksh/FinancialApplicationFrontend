@@ -18,6 +18,9 @@ import LandingPage from 'containers/LandingPage/Loadable';
 import LoadingContainer from 'containers/LoadingContainer/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import RegistrationContainer from 'containers/RegistrationContainer/Loadable';
+import GeneralUser from '../User/GeneralUser/Loadable';
+
+import {ProtectedRoute} from '../../components/AuthenticationGuard';
 
 export default function App() {
   return (
@@ -26,6 +29,7 @@ export default function App() {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/userLoad" component={LoadingContainer} />
         <Route exact path="/registration" component={RegistrationContainer} />
+        <ProtectedRoute path="/user" component={GeneralUser} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
