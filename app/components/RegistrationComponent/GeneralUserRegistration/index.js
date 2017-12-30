@@ -150,7 +150,7 @@ class GeneralUserRegistration extends React.PureComponent { // eslint-disable-li
 
               {
                 this.state.stepNumber == 2 && this.props.registrationData.isUserRegistered &&
-                <form onSubmit={this.submitFormStepTwo}>
+                <form onSubmit={this.submitFormStepTwo} className="is-scrollable">
                   <fieldset>
                     <legend>Account Information</legend>
                     
@@ -227,7 +227,7 @@ class GeneralUserRegistration extends React.PureComponent { // eslint-disable-li
 
               {
                 this.state.stepNumber == 2 && !this.props.registrationData.isUserRegistered &&
-                <form onSubmit={this.submitFormStepTwo}>
+                <form onSubmit={this.submitFormStepTwo} className="is-scrollable">
                   <fieldset>
                     <legend>Account Information</legend>
                     
