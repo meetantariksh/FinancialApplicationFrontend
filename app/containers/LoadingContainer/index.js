@@ -39,6 +39,11 @@ export class LoadingContainer extends React.PureComponent { // eslint-disable-li
         }
       });
     }
+
+    // Timer temporary redirection
+    setTimeout(()=>{
+      window.location.href = "/user";
+    }, 3000)
   }
   
   render() {
