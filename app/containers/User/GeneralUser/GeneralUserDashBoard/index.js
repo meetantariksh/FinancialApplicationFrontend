@@ -17,7 +17,14 @@ import makeSelectGeneralUserDashBoard from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
+import runMain from '../../../../externalJS/UserDashboard/custom';
+
 export class GeneralUserDashBoard extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount(){
+    runMain();
+  }
+
   render() {
     return (
       <div>
@@ -83,7 +90,7 @@ export class GeneralUserDashBoard extends React.PureComponent { // eslint-disabl
                 </div>
                 <div className="col-md-3 col-sm-3 col-xs-12 bg-white">
                   <div className="x_title">
-                    <h2>Top Campaign Performance</h2>
+                    <h3>Top Campaign Performance</h3>
                     <div className="clearfix"></div>
                   </div>
 

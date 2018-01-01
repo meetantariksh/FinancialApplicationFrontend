@@ -19,8 +19,6 @@ import runChartJS from '../../../externalJS/UserDashboard/Chart.js/dist/Chart.mi
 import runGaugeJS from '../../../externalJS/UserDashboard/gauge.js/dist/gauge.min';
 import runBootstrapProgressBar from '../../../externalJS/UserDashboard/bootstrap-progressbar/bootstrap-progressbar.min';
 import runICheck from '../../../externalJS/UserDashboard/iCheck/icheck';
-import runDateRangePicker from '../../../externalJS/UserDashboard/bootstrap-daterangepicker/daterangepicker.js';
-import runMain from '../../../externalJS/UserDashboard/custom';
 
 import '../../../externalJS/UserDashboard/Flot/jquery.flot';
 import '../../../externalJS/UserDashboard/Flot/jquery.flot.pie.js';
@@ -40,7 +38,6 @@ import '../../../externalJS/UserDashboard/bootstrap/dist/css/bootstrap.min.css';
 import '../../../externalJS/UserDashboard/font-awesome/css/font-awesome.min.css';
 import '../../../externalJS/UserDashboard/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css';
 import '../../../externalJS/UserDashboard/jqvmap/dist/jqvmap.min.css';
-import '../../../externalJS/UserDashboard/bootstrap-daterangepicker/daterangepicker.css';
 import '../../../styles/UserDashboard/custom.css';
 
 export class GeneralUser extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -51,8 +48,6 @@ export class GeneralUser extends React.PureComponent { // eslint-disable-line re
     runGaugeJS();
     runBootstrapProgressBar();
     runICheck();
-    runDateRangePicker();
-    runMain();
   }
 
   render() {
@@ -306,16 +301,16 @@ export class GeneralUser extends React.PureComponent { // eslint-disable-line re
               <ProtectedRoute exact path="/user/home" component={UserDashboard} />
             </Switch>
             {/* Main Component - Move */}
+
+            <footer>
+              <div className="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+              </div>
+              <div className="clearfix"></div>
+            </footer>
+
           </div>
         </div>
-
-        {/*<footer>
-          <div className="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div className="clearfix"></div>
-        </footer>*/}
-
       </div>
     );
   }
