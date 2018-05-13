@@ -82,11 +82,11 @@ export class RegistrationContainer extends React.PureComponent { // eslint-disab
     return (
       <div>
         <Helmet>
-          <title>Arian Finance - Registration</title>
+          <title>Periscope Capitals - Registration</title>
           <meta name="description" content="Description of RegistrationContainer" />
         </Helmet>
         <header className="cd-main-header">
-          <h1 style={{paddingTop: '50px', paddingBottom: '25px'}}>Arian Finance Registration</h1>
+          <h1 style={{paddingTop: '50px', paddingBottom: '25px'}}>Periscope Capitals Registration</h1>
           <a onClick={this.goToHomePage}><h2>Return To Home Page</h2></a>
         </header>
           <ul className="cd-pricing">

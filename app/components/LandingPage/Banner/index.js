@@ -36,7 +36,7 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
             </div>
             <div className="row">
               <div className="col-sm-4 col-xs-12">
-                <div id="gtco-logo"><a href="#">ROGH</a></div>
+                <div id="gtco-logo"><a href="#">Periscope Enterprises.</a></div>
               </div>
               <div className="col-xs-8 text-right menu-1">
                 <ul>
@@ -66,7 +66,7 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
               <div className="col-md-12 col-md-offset-0 text-left">
                 <div className="display-t">
                   <div className="display-tc">
-                    <h1 className="animate-box" data-animate-effect="fadeInUp">ARIAN Finance</h1>
+                    <h1 className="animate-box" data-animate-effect="fadeInUp">Periscope Capitals</h1>
                     <h2 className="animate-box" data-animate-effect="fadeInUp">Let's Tell Your Money What To Do, Before It Leaves...</h2>
                   </div>
                 </div>

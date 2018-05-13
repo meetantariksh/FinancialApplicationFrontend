@@ -29,7 +29,7 @@ export class GeneralUserDashBoard extends React.PureComponent { // eslint-disabl
     return (
       <div>
         <Helmet>
-          <title>Home - Arian Finance</title>
+          <title>Home - Periscope Capitals</title>
           <meta name="description" content="Description of GeneralUserDashBoard" />
         </Helmet>
         

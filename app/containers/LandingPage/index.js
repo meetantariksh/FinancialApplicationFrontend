@@ -55,7 +55,7 @@ const options = {
     primaryColor: '#0072ff'
   },
   languageDictionary: {
-    title: "Arian Finance",
+    title: "Periscope Capitals",
   },
 }
 
@@ -121,7 +121,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
     return (
       <div>
         <Helmet>
-          <title>Arian Financials</title>
+          <title>Periscope Capitals</title>
           <meta name="description" content="This is the landing page for MAASS Financial Application" />
         </Helmet>
         <div className="gtco-loader"></div>

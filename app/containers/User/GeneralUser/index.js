@@ -60,7 +60,7 @@ export class GeneralUser extends React.PureComponent { // eslint-disable-line re
               <div className="left_col scroll-view">
 
                 <div className="navbar nav_title" style={{border: 0}}>
-                  <a href="index.html" className="site_title"><i className="fa fa-paw"></i> <span>ARIAN Finance</span></a>
+                  <a href="index.html" className="site_title"><i className="fa fa-paw"></i> <span>Periscope Cap.</span></a>
                 </div>
 
                 <div className="clearfix"></div>
@@ -304,7 +304,7 @@ export class GeneralUser extends React.PureComponent { // eslint-disable-line re
 
             <footer>
               <div className="pull-right">
-                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                All rights of this application is reserved to Periscope Capitals. This website is developed and maintained by Periscope Technologies.
               </div>
               <div className="clearfix"></div>
             </footer>

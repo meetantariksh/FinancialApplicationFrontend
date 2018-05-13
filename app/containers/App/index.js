@@ -27,8 +27,8 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/userLoad" component={LoadingContainer} />
         <Route exact path="/registration" component={RegistrationContainer} />
+        <ProtectedRoute exact path="/userLoad" component={LoadingContainer} />
         <ProtectedRoute path="/user" component={GeneralUser} />
         <Route component={NotFoundPage} />
       </Switch>
