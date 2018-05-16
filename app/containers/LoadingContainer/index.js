@@ -24,28 +24,28 @@ const lock = new Auth0Lock(
 );
 
 export class LoadingContainer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  
-  componentDidMount(){
+
+  componentDidMount() {
     let authStatus = false;
-    if(!window.sessionStorage.getItem('non_db_authentication_token') || window.sessionStorage.getItem('non_db_authentication_token')==''){
-      lock.on("authenticated", function(authResult) {
+    if (!window.sessionStorage.getItem('non_db_authentication_token') || window.sessionStorage.getItem('non_db_authentication_token') == '') {
+      lock.on('authenticated', (authResult) => {
         console.log(authResult);
         authStatus = true;
-        lock.getUserInfo(authResult.accessToken, function(error, profile) {
+        lock.getUserInfo(authResult.accessToken, (error, profile) => {
           window.sessionStorage.setItem('non_db_authentication_token', authResult.accessToken);
         });
-        if(!authStatus){
-          window.location.href = "/";
+        if (!authStatus) {
+          window.location.href = '/';
         }
       });
     }
 
     // Timer temporary redirection
-    setTimeout(()=>{
-      window.location.href = "/user";
-    }, 3000)
+    setTimeout(() => {
+      window.location.href = '/user';
+    }, 3000);
   }
-  
+
   render() {
     return (
       <div className="loader-body">
