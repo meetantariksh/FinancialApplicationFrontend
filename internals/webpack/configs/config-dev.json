@@ -1,0 +1,5 @@
+{
+    "user_login_redirection": "http://localhost:3001/user",
+    "news_headlines_api": "http://localhost:8080/getNewsHeadlines",
+    "sustain_login_cookie_name": "periscope__swaant_ghoroy_logn_switch_cookie"
+}

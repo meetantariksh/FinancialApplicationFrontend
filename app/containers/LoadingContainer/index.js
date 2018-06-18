@@ -29,10 +29,13 @@ export class LoadingContainer extends React.PureComponent { // eslint-disable-li
     let authStatus = false;
     if (!window.sessionStorage.getItem('non_db_authentication_token') || window.sessionStorage.getItem('non_db_authentication_token') == '') {
       lock.on('authenticated', (authResult) => {
-        console.log(authResult);
         authStatus = true;
         lock.getUserInfo(authResult.accessToken, (error, profile) => {
-          window.sessionStorage.setItem('non_db_authentication_token', authResult.accessToken);
+          let expires = '';
+          const date = new Date();
+          date.setTime(date.getTime() + (60 * 1000));
+          expires = '; expires=' + date.toUTCString();
+          document.cookie = `${_globals.config.sustain_login_cookie_name}=${authResult.accessToken || ''}${expires}; path=/`;
         });
         if (!authStatus) {
           window.location.href = '/';
@@ -42,7 +45,7 @@ export class LoadingContainer extends React.PureComponent { // eslint-disable-li
 
     // Timer temporary redirection
     setTimeout(() => {
-      window.location.href = '/user';
+      window.location.href = _globals.config.user_login_redirection;
     }, 3000);
   }
 

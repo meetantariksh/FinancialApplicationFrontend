@@ -1,21 +1,21 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 
-import{
-  LOAD_NEWS
+import {
+  LOAD_NEWS,
 } from './constants';
-import{
+import {
   loadNewsComplete,
-  loadNewsError
+  loadNewsError,
 } from './actions';
 
-import{
-  requestGetAPIData
+import {
+  requestGetAPIData,
 } from '../../utils/requestAPIData';
 
-export function* loadNewsHeadLines(){
-  const apiUrl = 'http://localhost:8080/getNewsHeadlines';
+export function* loadNewsHeadLines() {
+  const apiUrl = _globals.config.news_headlines_api;
   try {
-    let newsHeadLines = yield call(requestGetAPIData, apiUrl);
+    const newsHeadLines = yield call(requestGetAPIData, apiUrl);
     yield put(loadNewsComplete(newsHeadLines));
   } catch (err) {
     console.log(err);
