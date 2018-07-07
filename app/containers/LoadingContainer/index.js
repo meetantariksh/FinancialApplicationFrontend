@@ -33,8 +33,10 @@ export class LoadingContainer extends React.PureComponent { // eslint-disable-li
         lock.getUserInfo(authResult.accessToken, (error, profile) => {
           let expires = '';
           const date = new Date();
-          date.setTime(date.getTime() + (60 * 1000));
+          date.setTime(date.getTime() + (3 * 60 * 1000));
           expires = '; expires=' + date.toUTCString();
+          console.log(profile);
+          console.log(authResult);
           document.cookie = `${_globals.config.sustain_login_cookie_name}=${authResult.accessToken || ''}${expires}; path=/`;
         });
         if (!authStatus) {
@@ -44,9 +46,9 @@ export class LoadingContainer extends React.PureComponent { // eslint-disable-li
     }
 
     // Timer temporary redirection
-    setTimeout(() => {
-      window.location.href = _globals.config.user_login_redirection;
-    }, 3000);
+    // setTimeout(() => {
+    //   window.location.href = _globals.config.user_login_redirection;
+    // }, 3000);
   }
 
   render() {

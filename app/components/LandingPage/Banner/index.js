@@ -15,7 +15,7 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
     this.dispatchRegistration = this.dispatchRegistration.bind(this);
   }
   onLoginActivate(){
-    this.props.authenticationLock.show(); 
+    this.props.authenticationLock.login(); 
   }
   dispatchRegistration(){
     this.props.dispatchRegistration(); 
@@ -29,7 +29,7 @@ class Banner extends React.PureComponent { // eslint-disable-line react/prefer-s
             <div className="row">
               <div className="col-md-12 text-right gtco-contact">
                 <ul className="">
-                  <li><a onClick={this.onLoginActivate}><strong>Login</strong></a></li>
+                  <li><a style={{cursor: 'pointer'}} onClick={this.onLoginActivate}><strong>Login</strong></a></li>
                   <li><a onClick={this.dispatchRegistration}><strong>Register</strong></a></li>
                 </ul>
               </div>

@@ -11,7 +11,8 @@ import { Helmet } from 'react-helmet';
 import { push } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import Auth0Lock from 'auth0-lock';
+
+import Auth from '../../components/Common/AuthenticationService';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -38,32 +39,6 @@ import '../../styles/LandingPage/bootstrap.css';
 import '../../styles/LandingPage/magnific-popup.css';
 import '../../styles/LandingPage/owl.carousel.min.css';
 import '../../styles/LandingPage/owl.theme.default.min.css';
-
-const logo = require('../../images/LandingPage/logo.jpg');
-const authentication = {
-  responseType: 'token',
-  redirectUrl: 'http://localhost:3000/userLoad'
-}
-
-const options = {
-  oidcConformant: true,
-  auth: authentication,
-  allowShowPassword: true,
-  allowSignUp: false,
-  theme: {
-    logo: logo,
-    primaryColor: '#0072ff'
-  },
-  languageDictionary: {
-    title: "Periscope Capitals",
-  },
-}
-
-const lock = new Auth0Lock(
-  'fWoMdxejWduzgcOzHeOTi5JG63ck7pyx',
-  'meetantariksh.auth0.com',
-  options
-);
 
 export class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
@@ -131,7 +106,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
             <LandingPageMainComponent
               showNewsComponent = {this.state.showNewsComponent}
               newsData = {this.state.newsData}
-              authenticationLock={lock}
+              authenticationLock={new Auth()}
               dispatchRegistration={this.dispatchRegistration}
             />
           </div>
