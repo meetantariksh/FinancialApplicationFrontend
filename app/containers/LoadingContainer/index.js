@@ -16,33 +16,16 @@ import makeSelectLoadingContainer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import '../../styles/LoadingStyles/LoadingPage/style.css';
+import AuthenticationService from '../../components/Common/AuthenticationService';
 
-const lock = new Auth0Lock(
-  'fWoMdxejWduzgcOzHeOTi5JG63ck7pyx',
-  'meetantariksh.auth0.com'
-);
+import '../../styles/LoadingStyles/LoadingPage/style.css';
 
 export class LoadingContainer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    let authStatus = false;
     if (!window.sessionStorage.getItem('non_db_authentication_token') || window.sessionStorage.getItem('non_db_authentication_token') == '') {
-      lock.on('authenticated', (authResult) => {
-        authStatus = true;
-        lock.getUserInfo(authResult.accessToken, (error, profile) => {
-          let expires = '';
-          const date = new Date();
-          date.setTime(date.getTime() + (3 * 60 * 1000));
-          expires = '; expires=' + date.toUTCString();
-          console.log(profile);
-          console.log(authResult);
-          document.cookie = `${_globals.config.sustain_login_cookie_name}=${authResult.accessToken || ''}${expires}; path=/`;
-        });
-        if (!authStatus) {
-          window.location.href = '/';
-        }
-      });
+      const auth = new AuthenticationService();
+      auth.handleAuthentication();
     }
 
     // Timer temporary redirection
