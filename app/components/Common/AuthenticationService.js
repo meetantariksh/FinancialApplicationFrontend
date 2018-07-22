@@ -43,11 +43,6 @@ export default class Auth {
         window.location.href = '/';
       } else {
         this.getUserProfile(result.accessToken);
-        let expires = '';
-        const date = new Date();
-        date.setTime(date.getTime() + (3 * 60 * 1000));
-        expires = `; expires=${date.toUTCString()}`;
-        document.cookie = `${_globals.config.sustain_login_cookie_name}=${`${result.accessToken}~#~${result.idToken}` || ''}${expires}; path=/`;
       }
     });
   }
@@ -55,16 +50,15 @@ export default class Auth {
   getUserProfile(accessToken) {
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
-        console.log(profile);
         this.initiateLogin(accessToken, profile);
-      }else if(err) {
+      } else if (err) {
         console.log(err);
       }
     });
   }
 
   initiateLogin(accessToken, profile) {
-    let body = {
+    const body = {
       token: accessToken,
       email: profile.email,
       sub: profile.sub,
@@ -77,13 +71,14 @@ export default class Auth {
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
-    }).then(function(response){
-        console.log(response);
-      });
-
-    axios.post(_globals.config.initiate_login, body)
-      .then(function(response){
-        console.log(response);
-      });
+    }).then((response) => {
+      console.log(response);
+      let expires = '';
+      const date = new Date();
+      date.setTime(date.getTime() + (3 * 60 * 1000));
+      expires = `; expires=${date.toUTCString()}`;
+      document.cookie = `${_globals.config.sustain_login_cookie_name}=${`${response.data.initialAuthenticationToken}` || ''}${expires}; path=/`;
+      window.location.href = _globals.config.user_login_redirection;
+    });
   }
 }
